@@ -1,4 +1,5 @@
 age = int(input("Please enter your age: "))
+
 if age < 2:
     print("You are a baby")
 elif 2 <= age < 4:
