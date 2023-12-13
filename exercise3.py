@@ -30,8 +30,12 @@ while True:
         result = first_number * second_number
         print(result)
     elif math_operator == "/":
-        result = first_number / second_number
-        print(result)
+        if second_number == 0:
+            print("Division by zero is forbidden")
+            break
+        else:
+            result = first_number / second_number
+            print(result)
 
 # task 2 - divide a list by 2
 new_list = []
