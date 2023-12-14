@@ -39,37 +39,27 @@ while True:
 
 # task 2 - divide a list by 2
 new_list = []
-first_list =[]
-second_list =[]
+first_list = []
+second_list = []
 
 new_list = input("Please enter a list: ").split(",")
+
+if new_list[0] == "":
+    new_list.remove("")
+
 number_of_symbols = len(new_list)
 
 if number_of_symbols % 2 == 0:
     index = int(number_of_symbols / 2)
-    i = 0
-    for i in range(0, index):
-        item = new_list[i]
-        first_list.append(item)
-        i = i + 1
-    for i in range(index,number_of_symbols):
-        item = new_list[i]
-        second_list.append(item)
-        i = i + 1
-elif number_of_symbols % 2 > 0:
-    index = int(number_of_symbols / 2) + 1
-    i = 0
-    for i in range(0, index):
-        item = new_list[i]
-        first_list.append(item)
-        i = i + 1
-    for i in range(index, number_of_symbols):
-        item = new_list[i]
-        second_list.append(item)
-        i = i + 1
 else:
-    first_list = []
-    second_list = []
+    index = int(number_of_symbols / 2) + 1
+
+for i in range(0, index):
+    item = new_list[i]
+    first_list.append(item)
+for i in range(index, number_of_symbols):
+    item = new_list[i]
+    second_list.append(item)
 
 final_list = [first_list, second_list]
 print(final_list)
@@ -77,17 +67,16 @@ print(final_list)
 # task 3 - multiplication
 user_number = input("Please enter your number: ")
 list_of_numbers = []
-multiplication_result = 1
+multiplication_result = 10
+for n in user_number:
+    list_of_numbers.append(int(n))
 
-if int(user_number) > 0:
-    for n in user_number:
-        list_of_numbers.append(int(n))
-
+while multiplication_result > 9:
+    multiplication_result = 1
     for m in list_of_numbers:
         multiplication_result = multiplication_result * m
-    print(multiplication_result)
-else:
-    print("Number should be > 0")
+    list_of_numbers = list(map(int, list(str(multiplication_result))))
+print(multiplication_result)
 
 # task 4 - move 0 to the end of the list
 user_list = list(input("Please enter list of numbers with zeros: ").split(","))
