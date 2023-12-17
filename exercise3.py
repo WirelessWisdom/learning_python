@@ -90,7 +90,7 @@ print(user_list)
 import random
 number_of_elements_in_random_list = random.randrange(3,10)
 list_randomized = []
-for i in range(0,number_of_elements_in_random_list):
+for i in range(0, number_of_elements_in_random_list):
     list_randomized.append(random.randint(0,99))
 print(f"Initial randomized list: {list_randomized}")
 new_randomized_list = []

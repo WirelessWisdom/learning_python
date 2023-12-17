@@ -22,12 +22,12 @@ print(result)
 # task 3 - create a dictionary to group a sequence of tuples
 original_list = [("yellow", 1), ("blue", 2), ("yellow", 3), ("blue", 4), ("red", 1)]
 ordered_dictionary = {}
-value = []
 for i in range(0, len(original_list)):
     key = original_list[i][0]
-
-    value.append(original_list[i][1])  # can't understand how to implement a check for adding a value
-    ordered_dictionary[key] = value
+    if key not in ordered_dictionary:
+        ordered_dictionary[key] = [original_list[i][1]]
+    else:
+        ordered_dictionary[key].append(original_list[i][1])
 print(ordered_dictionary)
 
 
@@ -38,7 +38,7 @@ elements_of_first_sum = ()
 first_list_of_tuples = []
 for first in range(0, len(first_list)):
     for second in range(0, len(first_list)):
-        if first_list[first] + first_list[second] == first_expected_value:
+        if first_list[first] + first_list[second] == first_expected_value and first != second:
             elements_of_first_sum = (first_list[first], first_list[second])
             first_list_of_tuples.append(elements_of_first_sum)
 print(first_list_of_tuples)
@@ -50,7 +50,7 @@ elements_of_second_sum = ()
 second_list_of_tuples = []
 for first_first in range(0, len(second_list)):
     for second_second in range(0, len(second_list)):
-        if second_list[first_first] + second_list[second_second] == second_expected_value:
+        if second_list[first_first] + second_list[second_second] == second_expected_value and first_first != second_second:
             elements_of_second_sum = (second_list[first_first], second_list[second_second])
             second_list_of_tuples.append(elements_of_second_sum)
 print(second_list_of_tuples)
