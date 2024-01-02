@@ -32,7 +32,7 @@ def add_one(list_of_numbers):
         for i in range(len(list_of_numbers) - 1, -1, -1):
             current_sum = list_of_numbers[i] + holder
             list_of_numbers[i] = current_sum % 10
-            carry = current_sum // 10
+            holder = current_sum // 10
 
         if holder:
             list_of_numbers.insert(0, holder)
