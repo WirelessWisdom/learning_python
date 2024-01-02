@@ -26,19 +26,23 @@ def add_one(list_of_numbers):
     added_one = list_of_numbers[-1]
     new_value = int(added_one) + 1
     if new_value < 10:
-        list_of_numbers.remove(list_of_numbers[-1])
-        list_of_numbers.append(new_value)
+        list_of_numbers[-1] = new_value
     else:
-        list_of_numbers.reverse()
-        for i in range(len(list_of_numbers)):
-            list_of_numbers[i] = 0
-        list_of_numbers.append(1)
-        list_of_numbers.reverse()
+        holder = 1
+        for i in range(len(list_of_numbers) - 1, -1, -1):
+            current_sum = list_of_numbers[i] + holder
+            list_of_numbers[i] = current_sum % 10
+            carry = current_sum // 10
+
+        if holder:
+            list_of_numbers.insert(0, holder)
+
     return list_of_numbers
 
 
 first_group_of_numbers = [1, 2, 3, 4]
-second_group_of_numbers = [9, 9, 9, 9]
+# second_group_of_numbers = [9, 9, 9, 9]
+second_group_of_numbers = [8, 8, 9]
 print(add_one(first_group_of_numbers))
 print(add_one(second_group_of_numbers))
 
