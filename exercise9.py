@@ -1,7 +1,7 @@
 # task 1 - is_even without /, //, % and divmod
 def is_even(number):
     even_list = [0, 2, 4, 6, 8]
-    last_digit = int(str(number)[-1:])
+    last_digit = int(str(number)[-1])
     print(last_digit)
     if last_digit in even_list:
         return True
