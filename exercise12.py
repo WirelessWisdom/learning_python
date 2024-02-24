@@ -1,5 +1,3 @@
-import random
-
 
 class Rectangle:
 
@@ -53,7 +51,7 @@ class Rectangle:
 
     def __truediv__(self, other):
         square = self.get_square()
-        new_square = square / other
+        new_square = int(square / other)
         result = self.get_sides_of_rectangle(new_square)
         (new_width, new_height) = result
         return Rectangle(new_width, new_height)
