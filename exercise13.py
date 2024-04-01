@@ -4,23 +4,25 @@ class Fraction:
         self.b = b
 
     @staticmethod
-    def common_denominator(first_fraction, second_fraction):
+    def get_new_fractions_with_common_denominator(first_fraction, second_fraction):
         if first_fraction.b == second_fraction.b:
-            return first_fraction, second_fraction
+            return first_fraction.a, second_fraction.a, first_fraction.b
 
         else:
             first_fraction_new_a = first_fraction.a * second_fraction.b
-            first_fraction_new_b = first_fraction.b * second_fraction.b
+            common_denominator = first_fraction.b * second_fraction.b
+
             second_fraction_new_a = second_fraction.a * first_fraction.b
-            second_fraction_new_b = second_fraction.b * first_fraction.b
-            new_first_fraction = Fraction(first_fraction_new_a, first_fraction_new_b)
-            new_second_fraction = Fraction(second_fraction_new_a, second_fraction_new_b)
-            return new_first_fraction, new_second_fraction
+            # second_fraction_new_b = second_fraction.b * first_fraction.b
+
+            # new_first_fraction = Fraction(first_fraction_new_a, first_fraction_new_b)
+            # new_second_fraction = Fraction(second_fraction_new_a, second_fraction_new_b)
+            return first_fraction_new_a, second_fraction_new_a, common_denominator
 
     def __add__(self, other):
-        self, other = self.common_denominator(self, other)
-        new_a = self.a + other.a
-        new_fraction = Fraction(new_a, self.b)
+        first_a, second_a, denominator = self.get_new_fractions_with_common_denominator(self, other)
+        new_a = first_a + second_a
+        new_fraction = Fraction(new_a, denominator)
         return new_fraction
 
     def __mul__(self, other):
@@ -30,31 +32,22 @@ class Fraction:
         return result
 
     def __sub__(self, other):
-        self, other = self.common_denominator(self, other)
-        new_a = self.a - other.a
-        new_fraction = Fraction(new_a, self.b)
+        first_a, second_a, denominator = self.get_new_fractions_with_common_denominator(self, other)
+        new_a = first_a - second_a
+        new_fraction = Fraction(new_a, denominator)
         return new_fraction
 
     def __eq__(self, other):
-        self, other = self.common_denominator(self, other)
-        if self.a == other.a:
-            return True
-        else:
-            return False
+        first_a, second_a, denominator = self.get_new_fractions_with_common_denominator(self, other)
+        return first_a == second_a
 
     def __gt__(self, other):
-        self, other = self.common_denominator(self, other)
-        if self.a > other.a:
-            return True
-        else:
-            return False
+        first_a, second_a, denominator = self.get_new_fractions_with_common_denominator(self, other)
+        return first_a > second_a
 
     def __lt__(self, other):
-        self, other = self.common_denominator(self, other)
-        if self.a < other.a:
-            return True
-        else:
-            return False
+        first_a, second_a, denominator = self.get_new_fractions_with_common_denominator(self, other)
+        return first_a < second_a
 
     def __str__(self):
         return f"Fraction: {self.a}, {self.b}"
