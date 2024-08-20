@@ -9,8 +9,6 @@ class Item:
     def __str__(self):
         return (f"name = {self.name}\n"
                 f"description = {self.description}\n"
-
-
                 f"price = {self.price}\n"
                 f"country = {self.country}\n ")
 
